@@ -28,12 +28,11 @@ for comment in subreddit.stream.comments():
 		formattedcourse = '**' + course + '**'
 
 		try:
-			reply = formattedcourse + ': ' + classes[course]['title'] + '\n\n **Prerequisites**:'
+			reply = formattedcourse + ': ' + classes[course]['title'] + '\n\n **Prerequisites**:\n\n'
 
 			for req in classes[course]['prereqs']:
-				reply = reply + ' ' + req + 'AND'
+				reply = reply + ' - ' + req + '\n\n'
 
-			reply = reply[:-3]
 			comment.reply(reply)
 
 			logfile.write(datetime.datetime.now().strftime('%H:%M:%S') + ':: ' + 'Success! posted a comment.\n')
